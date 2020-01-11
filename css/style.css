@@ -1,0 +1,36 @@
+*{
+    
+}
+body{
+    background-color: bisque;
+}
+
+.row{
+    width:100%;
+    height:auto;
+    display:grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.picDiv{
+    text-align: center;
+    padding: 20px 20px;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+    
+}
+
+.krecikP{
+    max-width:100%;
+    position:relative;
+    top:2%;
+    right:5%;
+    z-index:1;
+}
+
+.score{
+    text-align: center;
+}
