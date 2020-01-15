@@ -1,27 +1,52 @@
-//na random numer zmień <img class="krecikP" src="../img/krecikP.png"> na <img class="krecikP" src="../img/krecik.png">
-
-
+const holes = document.querySelectorAll('.hole');
+const scoreBoard = document.querySelectorAll('.score');
+const moles = document.querySelectorAll('.mole');
+let lastHole;
+let timeUp = false;
 let score = 0;
-let randomNum = 0;
 
-
-function krecik(){
-    setInterval(function(){
-        randomNum = Math.floor(Math.random()*12); //0-11
-        document.getElementById(`blank${randomNum}`).src="../img/krecik.png"
-        setTimeout(function(){
-            document.getElementById(`blank${randomNum}`).src="../img/krecikP.png";  
-        }, 500);
-    }, 800); 
+function randomTime(min, max){
+    return Math.round(Math.random()*(max-min)+min);
 }
-krecik();
 
-document.querySelectorAll().addEventListener('click', point());
-function point(){
-    score++;  
-    document.getElementById('score').innerHTML = score;  
+function randomHole(holes){
+    const idx = Math.floor(Math.random()*holes.length);
+    const hole = holes[idx];
+    if (hole === lastHole){
+        return randomHole(holes);
+    }
+    lastHole = hole;
+    return hole;
 }
-console.log(score);
+
+function show(){
+    const time = randomTime(200, 1000);
+    const hole = randomHole(holes);
+    hole.classList.add('up');
+    setTimeout(() => {
+        hole.classList.remove('up');
+        if(!timeUp)show();
+    }, time);
+    
+}
+
+function startGame(){
+    scoreBoard.textContent = 0;
+    scoreBoard[0].textContent = 0;
+    timeUp = false;
+    score = 0;
+    show();
+    setTimeout(()=>timeUp = true, 10000)
+}
+
+function hit(e){
+    score++;
+    this.classList.remove('up');
+    scoreBoard[0].textContent = score;
+}
+
+moles.forEach(mole => mole.addEventListener('click', hit));
+
 
 
 
