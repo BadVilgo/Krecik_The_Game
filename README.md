@@ -16,13 +16,12 @@ My project is a game in which you have to catch a mole "krecik" with your mouse 
 
 ## Technologies
 * JavaScript 
-* CSS3 - grid 
+* CSS3 - flexbox 
 * HTML5 
 
 
 ## Demo
-https://github.com/BadVilgo/xxx/
-
+https://badvilgo.github.io/Krecik_The_Game/
 
 ## Status
 Project is: _inProgres_.
